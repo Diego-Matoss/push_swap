@@ -7,7 +7,8 @@ void	print_stack(t_stack *stack)
     node = stack->top;
     while (node->next)
     {
-        ft_printf("Valor: %d, Indice: %d", node->value, node->index);
+        ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
         node = node->next;
     }
+    ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
 }

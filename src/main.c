@@ -38,19 +38,13 @@
 
 int main()
 {
-	t_stack	*stack = NULL;
-	t_node	*node;
-	t_node	*node2;
-	t_node	*node3;
+	t_stack	*stack;
 
+	stack = malloc(sizeof(t_stack));
 	init_stack(stack);
-	node = new_node(1);
-	node2 = new_node(2);
-	node3 = new_node(3);
-
-	stack_add_back(stack, node);
-	stack_add_back(stack, node2);
-	stack_add_back(stack, node3);
+	stack_add_back(stack, new_node(56));
+	stack_add_back(stack, new_node(2));
+	stack_add_back(stack, new_node(76));
 
 	print_stack(stack);
 	return (0);
