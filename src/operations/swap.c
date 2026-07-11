@@ -6,7 +6,7 @@ static void	swap(t_stack *stack)
 	t_node	*first;
 	t_node	*second;
 
-	if (!stack || stack->size < 2)
+	if (!stack || !stack->top || stack->size < 2)
 		return ;
 	first = stack->top;
 	second = first->next;
