@@ -14,7 +14,8 @@ INCLUDES = -I . -I $(LIBFT_DIR)
 SRCS = src/main.c \
 src/parser.c \
 src/stack.c \
-src/utils.c
+src/utils.c \
+src/debug.c
 
 OBJS = $(SRCS:.c=.o)
 

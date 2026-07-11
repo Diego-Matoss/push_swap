@@ -27,6 +27,12 @@ int main(int argc, char *argv[])
 		ft_printf("Error\n");
 		return (1);
 	}
+	if (stack_is_sorted(&a))
+	{
+		free_stack(&a);
+		ft_printf("Stack is sorted");
+		return (0);
+	}
 	assign_indexes(&a);
 	print_stack(&a);
 	free_stack(&a);

@@ -1,20 +1,17 @@
 #include "../includes/push_swap.h"
 
-void	print_stack(t_stack *stack)
+int	stack_is_sorted(t_stack *stack)
 {
-	t_node	*node;
+	t_node	*current;
 
-	node = stack->top;
-	if (!node)
+	if (!stack)
+		return (0);
+	current = stack->top;
+	while (current && current->next)
 	{
-		ft_printf("Empty stack!");
-		return ;
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
 	}
-	ft_printf("Stack size: %d\n", stack->size);
-	while (node->next)
-	{
-		ft_printf("Value: %d | Index: %d\n", node->value, node->index);
-		node = node->next;
-	}
-	ft_printf("Value: %d | Index: %d\n", node->value, node->index);
+	return (1);
 }

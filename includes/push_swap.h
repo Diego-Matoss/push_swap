@@ -29,5 +29,6 @@ void	print_stack(t_stack *stack);
 int		parse_input(int argc, char **argv, t_stack *a);
 void	assign_indexes(t_stack *stack);
 void	free_stack(t_stack *stack);
+int		stack_is_sorted(t_stack *stack);
 
 #endif
