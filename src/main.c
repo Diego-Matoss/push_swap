@@ -18,7 +18,7 @@
 // {
 // 	int i;
 // 	int *stack_a;
-	
+
 // 	if (argc == 1)
 // 		return (0);
 // 	stack_a = malloc(sizeof(int) * argc - 1);
@@ -36,16 +36,14 @@
 // 	return (stack_a);
 // }
 
-int main()
+int main(int argc, char *argv[])
 {
-	t_stack	*stack;
+	t_stack	a;
 
-	stack = malloc(sizeof(t_stack));
-	init_stack(stack);
-	stack_add_back(stack, new_node(56));
-	stack_add_back(stack, new_node(2));
-	stack_add_back(stack, new_node(76));
+	init_stack(&a);
 
-	print_stack(stack);
+	ft_printf("%d\n", parse_input(argc, argv, &a));
+
+	print_stack(&a);
 	return (0);
 }

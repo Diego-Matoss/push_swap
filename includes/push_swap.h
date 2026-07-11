@@ -1,10 +1,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
 #include <stdlib.h>
 #include "../libft/libft.h"
 #include "../ft_printf/ft_printf.h"
+
+#define INT_MAX 2147483647
+#define INT_MIN (-2147483648)
 
 typedef struct s_node
 {
@@ -19,10 +21,11 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-void init_stack(t_stack *stack);
+void	init_stack(t_stack *stack);
 t_node	*new_node(int value);
 t_node	*stack_last(t_stack *stack);
-void	stack_add_back(t_stack *stack, t_node *node);
+int		stack_add_back(t_stack *stack, int value);
 void	print_stack(t_stack *stack);
+int		parse_input(int argc, char **argv, t_stack *a);
 
 #endif

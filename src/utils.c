@@ -2,13 +2,13 @@
 
 void	print_stack(t_stack *stack)
 {
-    t_node *node;
+	t_node	*node;
 
-    node = stack->top;
-    while (node->next)
-    {
-        ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
-        node = node->next;
-    }
-    ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
+	node = stack->top;
+	while (node->next)
+	{
+		ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
+		node = node->next;
+	}
+	ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
 }
