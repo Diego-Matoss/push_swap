@@ -14,36 +14,22 @@
 // 	return (1);
 // }
 
-// int	*parsing(int argc, char *argv[])
-// {
-// 	int i;
-// 	int *stack_a;
-
-// 	if (argc == 1)
-// 		return (0);
-// 	stack_a = malloc(sizeof(int) * argc - 1);
-// 	if (!stack_a)
-// 		return (0);
-// 	i = 1;
-// 	if (argc > 1)
-// 	{
-// 		while (i < argc)
-// 		{
-// 			stack_a[i - 1] = ft_atoi(argv[i]);
-// 			i++;
-// 		}
-// 	}
-// 	return (stack_a);
-// }
-
 int main(int argc, char *argv[])
 {
 	t_stack	a;
 
+	if (argc == 1)
+		return (0);
 	init_stack(&a);
-
-	ft_printf("%d\n", parse_input(argc, argv, &a));
-
+	if (!parse_input(argc, argv, &a))
+	{
+		free_stack(&a);
+		ft_printf("Error\n");
+		return (1);
+	}
+	assign_indexes(&a);
 	print_stack(&a);
+	free_stack(&a);
+
 	return (0);
 }

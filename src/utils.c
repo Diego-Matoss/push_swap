@@ -5,10 +5,16 @@ void	print_stack(t_stack *stack)
 	t_node	*node;
 
 	node = stack->top;
+	if (!node)
+	{
+		ft_printf("Empty stack!");
+		return ;
+	}
+	ft_printf("Stack size: %d\n", stack->size);
 	while (node->next)
 	{
-		ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
+		ft_printf("Value: %d | Index: %d\n", node->value, node->index);
 		node = node->next;
 	}
-	ft_printf("Valor: %d, Indice: %d\n", node->value, node->index);
+	ft_printf("Value: %d | Index: %d\n", node->value, node->index);
 }

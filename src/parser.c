@@ -79,3 +79,25 @@ int	parse_input(int argc, char **argv, t_stack *a)
 	}
 	return (1);
 }
+
+void	assign_indexes(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*compare;
+	int		index;
+
+	current = stack->top;
+	while (current)
+	{
+		index = 0;
+		compare = stack->top;
+		while (compare)
+		{
+			if (compare->value < current->value)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
+}
