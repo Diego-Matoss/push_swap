@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-int	is_valid_number(const char *str)
+static int	is_valid_number(const char *str)
 {
 	int	i;
 
@@ -20,7 +20,7 @@ int	is_valid_number(const char *str)
 	return (1);
 }
 
-long	ft_atol(const char *str)
+static long	ft_atol(const char *str)
 {
 	long	result;
 	int		sign;
@@ -44,7 +44,7 @@ long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-int	has_duplicate(t_stack *stack,  int value)
+static int	has_duplicate(t_stack *stack,  int value)
 {
 	t_node	*current;
 	
