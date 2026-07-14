@@ -1,5 +1,4 @@
-#include "../includes/operations.h"
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static void	swap(t_stack *stack)
 {
@@ -13,4 +12,11 @@ static void	swap(t_stack *stack)
 	first->next = second->next;
 	second->next = first;
 	stack->top = second;
+}
+
+void sa(t_stack *a, int print)
+{
+	swap(a);
+	if (print == 1)
+		ft_printf("sa\n");
 }

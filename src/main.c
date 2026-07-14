@@ -1,4 +1,5 @@
 #include "../includes/push_swap.h"
+#include "../includes/operations.h"
 
 // int	is_sorted(int *array)
 // {
@@ -16,6 +17,7 @@
 
 int main(int argc, char *argv[])
 {
+	{
 	t_stack	a;
 
 	if (argc == 1)
@@ -30,12 +32,16 @@ int main(int argc, char *argv[])
 	if (stack_is_sorted(&a))
 	{
 		free_stack(&a);
-		ft_printf("Stack is sorted");
+		ft_printf("Stack is sorted\n");
 		return (0);
 	}
 	assign_indexes(&a);
 	print_stack(&a);
+
+	sa(&a, 1);
+	print_stack(&a);
 	free_stack(&a);
+	}
 
 	return (0);
 }
