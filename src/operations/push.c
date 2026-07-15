@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:53:09 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 19:57:27 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 20:03:27 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,11 @@ static void	push(t_stack *src, t_stack *dst)
 	dst->top = aux;
 	src->size--;
 	dst->size++;
+}
+
+void	pa(t_stack *a, t_stack *b, int print)
+{
+	push(b, a);
+	if (print == 1)
+		ft_printf("pa\n");
 }
