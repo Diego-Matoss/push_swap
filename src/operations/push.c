@@ -6,8 +6,13 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:53:09 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:02:43 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:08:10 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+
+static void	push(t_stack *src, t_stack *dst)
+{
+	
+}

@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:04:35 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:28:29 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ static int	has_duplicate(t_stack *stack, int value)
 
 int	parse_input(int argc, char **argv, t_stack *a)
 {
+	t_node	*new;
 	int		i;
 	long	num;
 
@@ -85,8 +86,10 @@ int	parse_input(int argc, char **argv, t_stack *a)
 			return (0);
 		if (has_duplicate(a, (int)num))
 			return (0);
-		if (!stack_add_back(a, (int)num))
+		new = new_node((int)num);
+		if (!new)
 			return (0);
+		stack_add_back(a, new);
 		i++;
 	}
 	return (1);
