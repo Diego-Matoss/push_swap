@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:28:29 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:46:26 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ int	parse_input(int argc, char **argv, t_stack *a)
 	int		i;
 	long	num;
 
+	if (!a || !argv)
+		return (0);
 	i = 1;
 	while (i < argc)
 	{

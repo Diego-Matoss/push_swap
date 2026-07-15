@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:05:40 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:30:33 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:53:07 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	stack_add_back(t_stack *stack, t_node *node)
 
 	if (!stack || !node)
 		return ;
+	node->next = NULL;
 	if (!stack->top)
 		stack->top = node;
 	else
@@ -55,5 +56,11 @@ void	stack_add_back(t_stack *stack, t_node *node)
 	}
 	stack->size++;
 }
-/* int	stack_add_front(t_stack *stack, t_node *node)
-{} */
+void	stack_add_front(t_stack *stack, t_node *node)
+{
+	if (!stack || !node)
+		return ;
+	node->next = stack->top;
+	stack->top = node;
+	stack->size++;
+}
