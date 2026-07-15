@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:53:09 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 20:03:27 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 20:12:39 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,11 @@ void	pa(t_stack *a, t_stack *b, int print)
 	push(b, a);
 	if (print == 1)
 		ft_printf("pa\n");
+}
+
+void	pb(t_stack *a, t_stack *b, int print)
+{
+	push(a, b);
+	if (print == 1)
+		ft_printf("pb\n");
 }
