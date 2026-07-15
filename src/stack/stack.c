@@ -6,11 +6,11 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:02 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 17:06:14 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:46:55 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void	init_stack(t_stack *stack)
 {

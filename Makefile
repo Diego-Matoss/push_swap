@@ -12,10 +12,10 @@ PRINTF = $(PRINTF_DIR)/libftprintf.a
 INCLUDES = -I . -I $(LIBFT_DIR)
 
 SRCS = src/main.c \
-src/parser.c \
-src/stack.c \
-src/utils.c \
-src/debug.c \
+src/parsing/parser.c \
+src/stack/stack.c \
+src/stack/stack_utils.c \
+src/debug/debug.c \
 src/operations/swap.c
 
 OBJS = $(SRCS:.c=.o)

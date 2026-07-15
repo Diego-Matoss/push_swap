@@ -6,11 +6,11 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 17:08:39 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 17:43:46 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 static int	is_valid_number(const char *str)
 {

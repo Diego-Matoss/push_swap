@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 17:08:46 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 17:08:51 by dimatos-         ###   ########.fr       */
+/*   Created: 2026/07/15 17:05:40 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/07/15 17:47:28 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
-void	print_stack(t_stack *stack)
+int	stack_is_sorted(t_stack *stack)
 {
-	t_node	*node;
+	t_node	*current;
 
-	node = stack->top;
-	if (!node)
+	if (!stack)
+		return (0);
+	current = stack->top;
+	while (current && current->next)
 	{
-		ft_printf("Stack is empty!");
-		return ;
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
 	}
-	ft_printf("Stack size: %d\n", stack->size);
-	while (node->next)
-	{
-		ft_printf("Value: %d | Index: %d\n", node->value, node->index);
-		node = node->next;
-	}
-	ft_printf("Value: %d | Index: %d\n", node->value, node->index);
+	return (1);
 }
