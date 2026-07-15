@@ -16,7 +16,8 @@ src/parsing/parser.c \
 src/stack/stack.c \
 src/stack/stack_utils.c \
 src/debug/debug.c \
-src/operations/swap.c
+src/operations/swap.c \
+src/operations/push.c
 
 OBJS = $(SRCS:.c=.o)
 
