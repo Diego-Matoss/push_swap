@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/07/15 17:07:30 by dimatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 #include "../includes/operations.h"
 
@@ -15,9 +27,8 @@
 // 	return (1);
 // }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	{
 	t_stack	a;
 
 	if (argc == 1)
@@ -37,11 +48,8 @@ int main(int argc, char *argv[])
 	}
 	assign_indexes(&a);
 	print_stack(&a);
-
 	sa(&a, 1);
 	print_stack(&a);
 	free_stack(&a);
-	}
-
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/07/15 17:08:39 by dimatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 static int	is_valid_number(const char *str)
@@ -29,8 +41,7 @@ static long	ft_atol(const char *str)
 	result = 0;
 	sign = 1;
 	i = 0;
-
-	if (str[i] == '-'  || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
@@ -44,10 +55,10 @@ static long	ft_atol(const char *str)
 	return (result * sign);
 }
 
-static int	has_duplicate(t_stack *stack,  int value)
+static int	has_duplicate(t_stack *stack, int value)
 {
 	t_node	*current;
-	
+
 	current = stack->top;
 	while (current)
 	{

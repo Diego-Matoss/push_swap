@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/07/15 17:13:11 by dimatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include "../libft/libft.h"
-#include "../ft_printf/ft_printf.h"
+# include <stdlib.h>
+# include "../libft/libft.h"
+# include "../ft_printf/ft_printf.h"
 
-#define INT_MAX 2147483647
-#define INT_MIN (-2147483648)
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_node
 {
