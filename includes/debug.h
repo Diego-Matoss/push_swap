@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 17:10:11 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 17:52:06 by dimatos-         ###   ########.fr       */
+/*   Created: 2026/07/15 18:01:43 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/07/15 18:02:19 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#ifndef DEBUG_H
+# define DEBUG_H
 
 # include "push_swap.h"
 
-void	sa(t_stack *a, int print);
-void	sb(t_stack *b, int print);
-void	ss(t_stack *a, t_stack *b, int print);
+void	print_stack(t_stack *stack);
 
 #endif

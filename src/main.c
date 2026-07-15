@@ -6,12 +6,15 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 17:07:30 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/15 18:03:29 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include "../includes/operations.h"
+#include "../includes/parsing.h"
+#include "../includes/stack.h"
+#include "../includes/debug.h"
 
 // int	is_sorted(int *array)
 // {
