@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 20:06:06 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:50:29 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	assign_indexes(&a);
+	print_stack(&a);
+	ra(&a, 1);
 	print_stack(&a);
 	return (0);
 }
