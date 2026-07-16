@@ -18,7 +18,8 @@ src/stack/stack_utils.c \
 src/debug/debug.c \
 src/operations/swap.c \
 src/operations/push.c \
-src/operations/rotate.c
+src/operations/rotate.c \
+src/operations/reverse_rotate.c
 
 OBJS = $(SRCS:.c=.o)
 
