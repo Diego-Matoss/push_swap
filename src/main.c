@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/16 19:17:26 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/16 19:21:58 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	main(int argc, char *argv[])
 	}
 	assign_indexes(&a);
 	stack_add_back(&b, new_node(3));
-	stack_add_back(&b, new_node(2));
-	stack_add_back(&b, new_node(1));
-	stack_add_back(&b, new_node(4));
 	print_stack(&a);
 	print_stack(&b);
 	return (0);
