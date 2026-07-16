@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 18:34:13 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/16 18:51:29 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/07/16 18:54:16 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,12 @@ void	rb(t_stack *b, int print)
 	rotate(b);
 	if (print == 1)
 		ft_printf("rb\n");
+}
+
+void	rr(t_stack *a, t_stack *b, int print)
+{
+	rotate(a);
+	rotate(b);
+	if (print == 1)
+		ft_printf("rr\n");
 }
