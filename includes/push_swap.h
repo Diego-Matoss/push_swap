@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:02:28 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/08/04 03:40:53 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,11 @@ typedef struct s_stack
 	t_node	*top;
 	int		size;
 }	t_stack;
+
+double  compute_disorder(t_stack *stack);
+void sort_three(t_stack *a);
+void sort_two(t_stack *a);
+void sort_small(t_stack *a, t_stack *b);
+void chunk_sort(t_stack *a, t_stack *b);
 
 #endif
