@@ -6,7 +6,7 @@
 /*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/08/04 03:40:53 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/08/06 05:50:32 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,20 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
+// Estrategias de ordenación
+typedef enum e_strategy
+{
+    ADAPTIVE,
+    SIMPLE,
+    MEDIUM,
+    COMPLEX
+}   t_strategy;
+
 double  compute_disorder(t_stack *stack);
 void sort_three(t_stack *a);
 void sort_two(t_stack *a);
 void sort_small(t_stack *a, t_stack *b);
 void chunk_sort(t_stack *a, t_stack *b);
+void radix_sort(t_stack *a, t_stack *b);
 
 #endif

@@ -22,7 +22,8 @@ src/operations/rotate.c \
 src/operations/reverse_rotate.c \
 src/algorithms/disorder.c \
 src/algorithms/simple.c \
-src/algorithms/chunk.c
+src/algorithms/chunk.c \
+src/algorithms/radix.c
 
 
 OBJS = $(SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/08/04 03:46:07 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/08/06 05:57:00 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,98 @@
 #include "../includes/stack.h"
 #include "../includes/debug.h"
 
-int main(int argc, char *argv[])
+/* 1. LECTOR DE FLAGS (Separado y limpio) */
+static t_strategy	parse_flags(int *argc, char ***argv)
 {
-    t_stack a;
-    t_stack b;          // 1. Declaramos la pila de apoyo
-    double  disorder;
-    int     percentage; // Movido arriba por la Norminette
+	t_strategy	strat;
 
-    if (argc == 1)
-        return (0);
-    
-    init_stack(&a);
-    init_stack(&b);     // 2. Inicializamos B vital para evitar Segmentation Faults
+	strat = ADAPTIVE;
+	if (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
+	{
+		if (ft_strncmp((*argv)[1], "--simple", 9) == 0)
+			strat = SIMPLE;
+		else if (ft_strncmp((*argv)[1], "--medium", 9) == 0)
+			strat = MEDIUM;
+		else if (ft_strncmp((*argv)[1], "--complex", 10) == 0)
+			strat = COMPLEX;
+		else if (ft_strncmp((*argv)[1], "--adaptive", 11) != 0)
+		{
+			ft_printf("Error\n");
+			exit(1);
+		}
+		(*argc)--;
+		(*argv)++;
+	}
+	return (strat);
+}
 
-    if (!parse_input(argc, argv, &a))
-    {
-        free_stack(&a);
-        free_stack(&b); // Liberamos B también por si acaso
-        ft_printf("Error\n");
-        return (1);
-    }
-    
-    if (stack_is_sorted(&a))
-    {
-        free_stack(&a);
-        free_stack(&b);
-        return (0);
-    }
-    
-    assign_indexes(&a);
-    
-    // --- 1. PRUEBA DEL DESORDEN ---
-    disorder = compute_disorder(&a);
-    percentage = (int)(disorder * 100.0);
-    ft_printf("Indice de desorden inicial: %d%%\n", percentage);
-    //ft_printf("--- Stack Inicial ---\n");
-    //print_stack(&a);
-    
-    // --- 2. PRUEBA DE ALGORITMOS SIMPLES ---
-    //ft_printf("\n--- Ejecutando movimientos ---\n");
-    
-    if (a.size == 2)
-        sort_two(&a);
-    else if (a.size == 3)
-        sort_three(&a);
-    else if (a.size == 4 || a.size == 5)
-        sort_small(&a, &b);
-	else if (a.size > 5)
-        chunk_sort(&a, &b);
+/* 2. GESTIÓN DE ERRORES (Para no ensuciar el main) */
+static void	exit_error(t_stack *a, t_stack *b)
+{
+	free_stack(a);
+	free_stack(b);
+	ft_printf("Error\n");
+	exit(1);
+}
 
-    //ft_printf("\n--- Stack Final ---\n");
-    //print_stack(&a);
-    
-    // --- LIMPIEZA FINAL ---
-    free_stack(&a);
-    free_stack(&b);     // 3. Liberamos B para que Valgrind esté feliz
-    return (0);
+/* 3. SUB-RUTINA: ALGORITMOS SIMPLES */
+static void	execute_simple(t_stack *a, t_stack *b)
+{
+	if (a->size == 2)
+		sort_two(a);
+	else if (a->size == 3)
+		sort_three(a);
+	else if (a->size <= 5)
+		sort_small(a, b);
+	else
+		chunk_sort(a, b);
+}
+
+/* 4. CEREBRO CENTRAL (Muy visual y fácil de explicar) */
+static void	execute_strategy(t_stack *a, t_stack *b, t_strategy strat, double dis)
+{
+	if (strat == ADAPTIVE)
+	{
+		if (dis < 0.2)
+			strat = SIMPLE;
+		else if (dis < 0.5)
+			strat = MEDIUM;
+		else
+			strat = COMPLEX;
+	}
+	if (strat == SIMPLE)
+		execute_simple(a, b);
+	else if (strat == MEDIUM)
+		chunk_sort(a, b);
+	else if (strat == COMPLEX)
+		radix_sort(a, b);
+}
+
+/* 5. MAIN PRINCIPAL (Un índice perfecto) */
+int	main(int argc, char *argv[])
+{
+	t_stack		a;
+	t_stack		b;
+	t_strategy	strat;
+	double		disorder;
+
+	if (argc == 1)
+		return (0);
+	strat = parse_flags(&argc, &argv);
+	init_stack(&a);
+	init_stack(&b);
+	if (!parse_input(argc, argv, &a))
+		exit_error(&a, &b);
+	if (stack_is_sorted(&a))
+	{
+		free_stack(&a);
+		free_stack(&b);
+		return (0);
+	}
+	assign_indexes(&a);
+	disorder = compute_disorder(&a);
+	execute_strategy(&a, &b, strat, disorder);
+	free_stack(&a);
+	free_stack(&b);
+	return (0);
 }
