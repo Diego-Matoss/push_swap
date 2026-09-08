@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/09/08 21:32:55 by rimatos-          #+#    #+#             */
+/*   Updated: 2026/09/08 21:33:21 by rimatos-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/operations.h"
 #include "../../includes/push_swap.h"
 #include "../../includes/stack.h"
@@ -34,11 +46,12 @@ void	sort_three(t_stack *a)
 	// Caso B: El más grande está en medio (ej: 1 3 2 o 2 3 1)
 	else if (a->top->next->value == highest)
 		rra(a, 1);
-	// Después de colocar al más grande abajo (o si ya estaba abajo como en 2 1 3),
+// Después de colocar al más grande abajo (o si ya estaba abajo como en 2 1 3),
 	// comprobamos si los dos de arriba necesitan intercambiarse.
 	if (a->top->value > a->top->next->value)
 		sa(a, 1);
 }
+
 // Encuentra el valor más bajo en el stack
 int	find_lowest(t_stack *stack)
 {

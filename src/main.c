@@ -6,7 +6,7 @@
 /*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/08/06 05:57:00 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/08 21:34:19 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../includes/parsing.h"
 #include "../includes/stack.h"
 #include "../includes/debug.h"
+#include <unistd.h> // Añadido para usar write()
 
 /* 1. LECTOR DE FLAGS (Separado y limpio) */
 static t_strategy	parse_flags(int *argc, char ***argv)
@@ -32,7 +33,7 @@ static t_strategy	parse_flags(int *argc, char ***argv)
 			strat = COMPLEX;
 		else if (ft_strncmp((*argv)[1], "--adaptive", 11) != 0)
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			exit(1);
 		}
 		(*argc)--;
@@ -46,7 +47,8 @@ static void	exit_error(t_stack *a, t_stack *b)
 {
 	free_stack(a);
 	free_stack(b);
-	ft_printf("Error\n");
+	// CORRECCIÓN: Error por stderr (fd 2)
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -68,7 +70,10 @@ static void	execute_strategy(t_stack *a, t_stack *b, t_strategy strat, double di
 {
 	if (strat == ADAPTIVE)
 	{
-		if (dis < 0.2)
+		// CORTAFUEGOS: Si son <= 5, forzamos SIMPLE para que no use Radix
+		if (a->size <= 5)
+			strat = SIMPLE;
+		else if (dis < 0.2)
 			strat = SIMPLE;
 		else if (dis < 0.5)
 			strat = MEDIUM;
