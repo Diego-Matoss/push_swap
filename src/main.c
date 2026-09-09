@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/08 21:34:19 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/09 18:16:57 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,26 +18,26 @@
 #include <unistd.h> // Añadido para usar write()
 
 /* 1. LECTOR DE FLAGS (Separado y limpio) */
-static t_strategy	parse_flags(int *argc, char ***argv)
+static t_strategy	parse_flags(int *argc, char **argv)
 {
 	t_strategy	strat;
 
 	strat = ADAPTIVE;
-	if (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
+	if (*argc > 1 && ft_strncmp((argv)[1], "--", 2) == 0)
 	{
-		if (ft_strncmp((*argv)[1], "--simple", 9) == 0)
+		if (ft_strncmp((argv)[1], "--simple", 9) == 0)
 			strat = SIMPLE;
-		else if (ft_strncmp((*argv)[1], "--medium", 9) == 0)
+		else if (ft_strncmp((argv)[1], "--medium", 9) == 0)
 			strat = MEDIUM;
-		else if (ft_strncmp((*argv)[1], "--complex", 10) == 0)
+		else if (ft_strncmp((argv)[1], "--complex", 10) == 0)
 			strat = COMPLEX;
-		else if (ft_strncmp((*argv)[1], "--adaptive", 11) != 0)
+		else if (ft_strncmp((argv)[1], "--adaptive", 11) != 0)
 		{
 			write(2, "Error\n", 6);
 			exit(1);
 		}
 		(*argc)--;
-		(*argv)++;
+		(argv)++;
 	}
 	return (strat);
 }
@@ -98,7 +98,7 @@ int	main(int argc, char *argv[])
 
 	if (argc == 1)
 		return (0);
-	strat = parse_flags(&argc, &argv);
+	strat = parse_flags(&argc, argv);
 	init_stack(&a);
 	init_stack(&b);
 	if (!parse_input(argc, argv, &a))
