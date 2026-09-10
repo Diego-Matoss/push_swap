@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/16 18:34:13 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/16 18:54:16 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/10 17:20:30 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ra(t_stack *a, int print)
 	rotate(a);
 	if (print == 1)
 		ft_printf("ra\n");
+	if (a->ops)
+		a->ops->ra++;
 }
 
 void	rb(t_stack *b, int print)
@@ -39,6 +41,8 @@ void	rb(t_stack *b, int print)
 	rotate(b);
 	if (print == 1)
 		ft_printf("rb\n");
+	if (b->ops)
+		b->ops->rb++;
 }
 
 void	rr(t_stack *a, t_stack *b, int print)
@@ -47,4 +51,6 @@ void	rr(t_stack *a, t_stack *b, int print)
 	rotate(b);
 	if (print == 1)
 		ft_printf("rr\n");
+	if (a->ops)
+		a->ops->rr++;
 }

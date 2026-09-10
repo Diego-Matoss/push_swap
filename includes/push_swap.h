@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/10 15:51:41 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/10 20:41:28 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,19 @@ typedef struct s_node
 
 typedef struct s_op_count
 {
-	int sa;
-	int sb;
-	int ss;
-	int pa;
-	int pb;
-	int ra;
-	int rb;
-	int rr;
-	int rra;
-	int rrb;
-	int rrr;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
 
 }					t_op_count;
-
-typedef struct s_stack
-{
-	t_node			*top;
-	int				size;
-	t_op_count		*ops;
-	int				fd;
-}					t_stack;
 
 typedef enum e_strategy
 {
@@ -59,6 +51,23 @@ typedef enum e_strategy
 	COMPLEX
 }					t_strategy;
 
+typedef struct s_bench
+{
+	int			is_active;
+	double		disorder;
+	t_strategy	strat;
+	t_op_count	ops;
+}				t_bench;
+
+typedef struct s_stack
+{
+	t_node			*top;
+	int				size;
+	t_op_count		*ops;
+	int				fd;
+}					t_stack;
+
+void				print_bench_stats(t_bench *b);
 double				compute_disorder(t_stack *stack);
 void				sort_three(t_stack *a);
 void				sort_two(t_stack *a);

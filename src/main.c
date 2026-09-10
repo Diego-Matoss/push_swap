@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/09 18:16:57 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/10 17:12:18 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,37 @@
 #include "../includes/parsing.h"
 #include "../includes/stack.h"
 #include "../includes/debug.h"
-#include <unistd.h> // Añadido para usar write()
+#include <unistd.h>
 
-/* 1. LECTOR DE FLAGS (Separado y limpio) */
-static t_strategy	parse_flags(int *argc, char ***argv)
+static void	check_strategy(char *arg, t_strategy *strat)
+{
+	if (ft_strncmp(arg, "--simple", 9) == 0)
+		*strat = SIMPLE;
+	else if (ft_strncmp(arg, "--medium", 9) == 0)
+		*strat = MEDIUM;
+	else if (ft_strncmp(arg, "--complex", 10) == 0)
+		*strat = COMPLEX;
+	else if (ft_strncmp(arg, "--adaptive", 11) == 0)
+		*strat = ADAPTIVE;
+	else
+	{
+		write(2, "Error\n", 6);
+		exit(1);
+	}
+}
+
+static t_strategy	parse_flags(int *argc, char ***argv, t_bench *bench)
 {
 	t_strategy	strat;
 
 	strat = ADAPTIVE;
-	if (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
+	bench->is_active = 0;
+	while (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
 	{
-		if (ft_strncmp((*argv)[1], "--simple", 9) == 0)
-			strat = SIMPLE;
-		else if (ft_strncmp((*argv)[1], "--medium", 9) == 0)
-			strat = MEDIUM;
-		else if (ft_strncmp((*argv)[1], "--complex", 10) == 0)
-			strat = COMPLEX;
-		else if (ft_strncmp((*argv)[1], "--adaptive", 11) != 0)
-		{
-			write(2, "Error\n", 6);
-			exit(1);
-		}
+		if (ft_strncmp((*argv)[1], "--bench", 8) == 0)
+			bench->is_active = 1;
+		else
+			check_strategy((*argv)[1], &strat);
 		(*argc)--;
 		(*argv)++;
 	}
@@ -88,19 +98,26 @@ static void	execute_strategy(t_stack *a, t_stack *b, t_strategy strat, double di
 		radix_sort(a, b);
 }
 
+static void	init_system(t_stack *a, t_stack *b, t_bench *bench)
+{
+	ft_bzero(&bench->ops, sizeof(t_op_count));
+	init_stack(a);
+	init_stack(b);
+	a->ops = &bench->ops;
+	b->ops = &bench->ops;
+}
+
 /* 5. MAIN PRINCIPAL (Un índice perfecto) */
 int	main(int argc, char *argv[])
 {
 	t_stack		a;
 	t_stack		b;
-	t_strategy	strat;
-	double		disorder;
+	t_bench		bench;
 
 	if (argc == 1)
 		return (0);
-	strat = parse_flags(&argc, &argv);
-	init_stack(&a);
-	init_stack(&b);
+	bench.strat = parse_flags(&argc, &argv, &bench);
+	init_system(&a, &b, &bench);
 	if (!parse_input(argc, argv, &a))
 		exit_error(&a, &b);
 	if (stack_is_sorted(&a))
@@ -110,8 +127,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	}
 	assign_indexes(&a);
-	disorder = compute_disorder(&a);
-	execute_strategy(&a, &b, strat, disorder);
+	bench.disorder = compute_disorder(&a);
+	execute_strategy(&a, &b, bench.strat, bench.disorder);
+	print_bench_stats(&bench);
 	free_stack(&a);
 	free_stack(&b);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:13 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/09 20:07:20 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/10 17:20:58 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	sa(t_stack *a, int print)
 	swap(a);
 	if (print == 1)
 		ft_printf("sa\n");
+	if (a->ops)
+		a->ops->sa++;
 }
 
 void	sb(t_stack *b, int print)
@@ -38,6 +40,8 @@ void	sb(t_stack *b, int print)
 	swap(b);
 	if (print == 1)
 		ft_printf("sb\n");
+	if (b->ops)
+		b->ops->sb++;
 }
 
 void	ss(t_stack *a, t_stack *b, int print)
@@ -46,4 +50,6 @@ void	ss(t_stack *a, t_stack *b, int print)
 	swap(b);
 	if (print == 1)
 		ft_printf("ss\n");
+	if (a->ops)
+		a->ops->ss++;
 }

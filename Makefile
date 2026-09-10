@@ -13,6 +13,7 @@ INCLUDES = -I . -I $(LIBFT_DIR)
 
 SRCS = src/main.c \
 src/parsing/parser.c \
+src/parsing/bench_manager.c \
 src/stack/stack.c \
 src/stack/stack_utils.c \
 src/debug/debug.c \
@@ -23,7 +24,7 @@ src/operations/reverse_rotate.c \
 src/algorithms/disorder.c \
 src/algorithms/simple.c \
 src/algorithms/chunk.c \
-src/algorithms/radix.c
+src/algorithms/radix.c 
 
 
 OBJS = $(SRCS:.c=.o)
