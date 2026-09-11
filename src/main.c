@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 16:53:46 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/11 20:56:31 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ int	main(int argc, char *argv[])
 		exit_error(&a, &b);
 	if (stack_is_sorted(&a))
 	{
+		bench.disorder = 0.0;
+        print_bench_stats(&bench);
 		free_stack(&a);
 		free_stack(&b);
 		return (0);
