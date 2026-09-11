@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/10 17:12:18 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/11 13:48:13 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,8 @@ static void	execute_simple(t_stack *a, t_stack *b)
 		sort_two(a);
 	else if (a->size == 3)
 		sort_three(a);
-	else if (a->size <= 5)
-		sort_small(a, b);
 	else
-		chunk_sort(a, b);
+		sort_small(a, b);
 }
 
 /* 4. CEREBRO CENTRAL (Muy visual y fácil de explicar) */
