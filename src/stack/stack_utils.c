@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:05:40 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/16 20:19:18 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/11 20:17:29 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,26 @@ t_node	*stack_last(t_stack *stack)
 	while (node->next)
 		node = node->next;
 	return (node);
+}
+
+void	assign_indexes(t_stack *stack)
+{
+	t_node	*current;
+	t_node	*compare;
+	int		index;
+
+	current = stack->top;
+	while (current)
+	{
+		index = 0;
+		compare = stack->top;
+		while (compare)
+		{
+			if (compare->value < current->value)
+				index++;
+			compare = compare->next;
+		}
+		current->index = index;
+		current = current->next;
+	}
 }

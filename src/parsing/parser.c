@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/07/15 18:46:26 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/11 20:17:22 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,33 @@ static int	has_duplicate(t_stack *stack, int value)
 	return (0);
 }
 
-int	parse_input(int argc, char **argv, t_stack *a)
+static void	free_matrix(char **matrix)
 {
-	t_node	*new;
+	int	i;
+
+	i = 0;
+	if (!matrix)
+		return ;
+	while (matrix[i])
+		free(matrix[i++]);
+	free(matrix);
+}
+
+static int	process_tokens(t_stack *a, char **tokens)
+{
 	int		i;
 	long	num;
+	t_node	*new;
 
-	if (!a || !argv)
+	i = 0;
+	if (!tokens || !tokens[0]) 
 		return (0);
-	i = 1;
-	while (i < argc)
+	while (tokens[i])
 	{
-		if (!is_valid_number(argv[i]))
+		if (!is_valid_number(tokens[i]))
 			return (0);
-		num = ft_atol(argv[i]);
-		if (num < INT_MIN || num > INT_MAX)
-			return (0);
-		if (has_duplicate(a, (int)num))
+		num = ft_atol(tokens[i]);
+		if (num < INT_MIN || num > INT_MAX || has_duplicate(a, (int)num))
 			return (0);
 		new = new_node((int)num);
 		if (!new)
@@ -97,24 +107,26 @@ int	parse_input(int argc, char **argv, t_stack *a)
 	return (1);
 }
 
-void	assign_indexes(t_stack *stack)
+int	parse_input(int argc, char **argv, t_stack *a)
 {
-	t_node	*current;
-	t_node	*compare;
-	int		index;
+	int		i;
+	char	**tokens;
 
-	current = stack->top;
-	while (current)
+	if (!a || !argv)
+		return (0);
+	i = 1;
+	while (i < argc)
 	{
-		index = 0;
-		compare = stack->top;
-		while (compare)
+		tokens = ft_split(argv[i], ' ');
+		if (!tokens)
+			return (0);
+		if (!process_tokens(a, tokens))
 		{
-			if (compare->value < current->value)
-				index++;
-			compare = compare->next;
+			free_matrix(tokens);
+			return (0);
 		}
-		current->index = index;
-		current = current->next;
+		free_matrix(tokens);
+		i++;
 	}
+	return (1);
 }
