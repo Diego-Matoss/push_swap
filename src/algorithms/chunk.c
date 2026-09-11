@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:33:47 by rimatos-          #+#    #+#             */
-/*   Updated: 2026/09/08 21:33:48 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/11 14:27:36 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	push_chunks(t_stack *a, t_stack *b)
 		chunk_size = a->size / 5;
 	else
 		chunk_size = a->size / 11;
+	if (chunk_size == 0)
+		chunk_size = 1;
 	limit = chunk_size;
 	while (a->size > 0)
 	{
