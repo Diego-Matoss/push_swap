@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:56:31 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/14 18:46:58 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,14 @@ static t_strategy	parse_flags(int *argc, char ***argv, t_bench *bench)
 	return (strat);
 }
 
-/* 2. GESTIÓN DE ERRORES (Para no ensuciar el main) */
 static void	exit_error(t_stack *a, t_stack *b)
 {
 	free_stack(a);
 	free_stack(b);
-	// CORRECCIÓN: Error por stderr (fd 2)
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-/* 3. SUB-RUTINA: ALGORITMOS SIMPLES */
 static void	execute_simple(t_stack *a, t_stack *b)
 {
 	if (a->size == 2)
@@ -78,7 +75,6 @@ static void	execute_strategy(t_stack *a, t_stack *b, t_strategy strat, double di
 {
 	if (strat == ADAPTIVE)
 	{
-		// CORTAFUEGOS: Si son <= 5, forzamos SIMPLE para que no use Radix
 		if (a->size <= 5)
 			strat = SIMPLE;
 		else if (dis < 0.2)
@@ -105,7 +101,6 @@ static void	init_system(t_stack *a, t_stack *b, t_bench *bench)
 	b->ops = &bench->ops;
 }
 
-/* 5. MAIN PRINCIPAL (Un índice perfecto) */
 int	main(int argc, char *argv[])
 {
 	t_stack		a;
