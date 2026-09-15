@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:55:02 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:18:47 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 15:44:34 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ void	stack_add_back(t_stack *stack, t_node *node);
 void	stack_add_front(t_stack *stack, t_node *node);
 
 void	assign_indexes(t_stack *stack);
+void	init_system(t_stack *a, t_stack *b, t_bench *bench);
 
 #endif

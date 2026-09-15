@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 18:00:01 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:18:43 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 15:50:04 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "push_swap.h"
 
-int		parse_input(int argc, char **argv, t_stack *a);
-int		bench_checker(int *argc, char **argv);
+int			parse_input(int argc, char **argv, t_stack *a);
+int			bench_checker(int *argc, char **argv);
+t_strategy	parse_flags(int *argc, char ***argv, t_bench *bench);
 
 #endif

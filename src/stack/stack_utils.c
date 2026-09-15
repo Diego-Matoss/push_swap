@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:05:40 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:17:29 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 15:44:02 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
+#include "../../includes/stack.h"
 
 int	stack_is_sorted(t_stack *stack)
 {
@@ -60,4 +61,13 @@ void	assign_indexes(t_stack *stack)
 		current->index = index;
 		current = current->next;
 	}
+}
+
+void	init_system(t_stack *a, t_stack *b, t_bench *bench)
+{
+	ft_bzero(&bench->ops, sizeof(t_op_count));
+	init_stack(a);
+	init_stack(b);
+	a->ops = &bench->ops;
+	b->ops = &bench->ops;
 }

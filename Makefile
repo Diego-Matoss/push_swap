@@ -14,6 +14,7 @@ INCLUDES = -I . -I $(LIBFT_DIR)
 SRCS = src/main.c \
 src/parsing/parser.c \
 src/parsing/bench_manager.c \
+src/parsing/parser_flags.c \
 src/stack/stack.c \
 src/stack/stack_utils.c \
 src/debug/debug.c \

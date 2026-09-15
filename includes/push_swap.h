@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:16:43 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 15:48:58 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../ft_printf/ft_printf.h"
 # include "../libft/libft.h"
 # include <stdlib.h>
+# include <unistd.h>
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
