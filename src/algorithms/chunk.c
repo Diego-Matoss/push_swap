@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:33:47 by rimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 14:27:36 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:07:15 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #include "../../includes/push_swap.h"
 #include "../../includes/stack.h"
 
-// --- FASE 1: EL EMBUDO (De A para B) ---
 void	push_chunks(t_stack *a, t_stack *b)
 {
 	int	chunk_size;
 	int	limit;
 
-	// LA MAGIA: Hacemos el tamaño dinámico para reventar los 500 números
 	if (a->size <= 100)
 		chunk_size = a->size / 5;
 	else
@@ -45,7 +43,6 @@ void	push_chunks(t_stack *a, t_stack *b)
 	}
 }
 
-// --- EL RADAR DEL FRANCOTIRADOR ---
 int	get_max_index_pos(t_stack *b)
 {
 	t_node	*current;
@@ -70,7 +67,6 @@ int	get_max_index_pos(t_stack *b)
 	return (max_pos);
 }
 
-// --- FASE 2: EL FRANCOTIRADOR (De B para A) ---
 void	push_back_to_a(t_stack *a, t_stack *b)
 {
 	int	max_pos;
@@ -98,7 +94,6 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 	}
 }
 
-// --- LA FUNCIÓN PRINCIPAL ---
 void	chunk_sort(t_stack *a, t_stack *b)
 {
 	push_chunks(a, b);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:07:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:17:22 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:09:38 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ static int	process_tokens(t_stack *a, char **tokens)
 	t_node	*new;
 
 	i = 0;
-	if (!tokens || !tokens[0]) 
+	if (!tokens || !tokens[0])
 		return (0);
 	while (tokens[i])
 	{

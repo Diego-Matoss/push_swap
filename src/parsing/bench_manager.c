@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench_manager.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dimatos- <dimatos-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 18:29:04 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/11 20:48:52 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:05:40 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,40 @@ static void	put_metric(char *label, int value)
 	ft_putnbr_fd(value, 2);
 }
 
-static void print_strat_name(t_strategy strat, double dis)
+static void	print_strat_name(t_strategy strat, double dis)
 {
-    ft_putstr_fd("[bench] strategy: ", 2);
-    if (strat == SIMPLE)
-        ft_putstr_fd("Simple / O(n^2)\n", 2);
-    else if (strat == MEDIUM)
-        ft_putstr_fd("Medium / O(n√n)\n", 2);
-    else if (strat == COMPLEX)
-        ft_putstr_fd("Complex / O(n log n)\n", 2);
-    else
-    {
-        if (dis < 0.2)
-            ft_putstr_fd("Adaptive / O(n^2)\n", 2);
-        else if (dis < 0.5)
-            ft_putstr_fd("Adaptive / O(n√n)\n", 2);
-        else
-            ft_putstr_fd("Adaptive / O(n log n)\n", 2);
-    }
+	ft_putstr_fd("[bench] strategy: ", 2);
+	if (strat == SIMPLE)
+		ft_putstr_fd("Simple / O(n^2)\n", 2);
+	else if (strat == MEDIUM)
+		ft_putstr_fd("Medium / O(n√n)\n", 2);
+	else if (strat == COMPLEX)
+		ft_putstr_fd("Complex / O(n log n)\n", 2);
+	else
+	{
+		if (dis < 0.2)
+			ft_putstr_fd("Adaptive / O(n^2)\n", 2);
+		else if (dis < 0.5)
+			ft_putstr_fd("Adaptive / O(n√n)\n", 2);
+		else
+			ft_putstr_fd("Adaptive / O(n log n)\n", 2);
+	}
 }
 
-static void print_header(double dis, t_strategy strat)
+static void	print_header(double dis, t_strategy strat)
 {
-    int     dec;
-    double  percent;
+	int		dec;
+	double	percent;
 
-    percent = dis * 100.0; 
-    put_metric("[bench] disorder: ", (int)percent);
-    ft_putstr_fd(".", 2);
-    dec = (int)(((percent - (double)((int)percent)) * 100) + 0.5);
-    if (dec < 10)
-        ft_putstr_fd("0", 2);
-    put_metric("", dec);
-    ft_putstr_fd("%\n", 2);
-    print_strat_name(strat, dis);
+	percent = dis * 100.0;
+	put_metric("[bench] disorder: ", (int)percent);
+	ft_putstr_fd(".", 2);
+	dec = (int)(((percent - (double)((int)percent)) * 100) + 0.5);
+	if (dec < 10)
+		ft_putstr_fd("0", 2);
+	put_metric("", dec);
+	ft_putstr_fd("%\n", 2);
+	print_strat_name(strat, dis);
 }
 
 void	print_bench_stats(t_bench *b)
