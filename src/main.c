@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:06:38 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/15 15:53:04 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:47:07 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	execute_simple(t_stack *a, t_stack *b)
 		sort_small(a, b);
 }
 
-static void	execute_strategy(t_stack *a, t_stack *b, t_strategy strat, double dis)
+static void	exec_strategy(t_stack *a, t_stack *b, t_strategy strat, double dis)
 {
 	if (strat == ADAPTIVE)
 	{
@@ -77,7 +77,7 @@ int	main(int argc, char *argv[])
 	}
 	assign_indexes(&a);
 	bench.disorder = compute_disorder(&a);
-	execute_strategy(&a, &b, bench.strat, bench.disorder);
+	exec_strategy(&a, &b, bench.strat, bench.disorder);
 	print_bench_stats(&bench);
 	free_stack(&a);
 	free_stack(&b);

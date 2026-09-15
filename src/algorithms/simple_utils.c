@@ -1,41 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   simple_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/03 00:29:56 by rimatos-          #+#    #+#             */
-/*   Updated: 2026/09/15 16:45:34 by dimatos-         ###   ########.fr       */
+/*   Created: 2026/09/15 16:35:31 by dimatos-          #+#    #+#             */
+/*   Updated: 2026/09/15 16:45:44 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-double	compute_disorder(t_stack *stack)
+int	find_highest(t_stack *stack)
 {
 	t_node	*current;
-	t_node	*runner;
-	double	inversions;
-	double	max_inversions;
-	double	n;
+	int		highest;
 
-	if (!stack || !stack->top || stack->size < 2)
-		return (0.0);
-	inversions = 0.0;
-	n = (double)stack->size;
-	max_inversions = (n * (n - 1.0)) / 2.0;
 	current = stack->top;
+	highest = current->value;
 	while (current != NULL)
 	{
-		runner = current->next;
-		while (runner != NULL)
-		{
-			if (current->value > runner->value)
-				inversions++;
-			runner = runner->next;
-		}
+		if (current->value > highest)
+			highest = current->value;
 		current = current->next;
 	}
-	return (inversions / max_inversions);
+	return (highest);
+}
+
+int	find_lowest(t_stack *stack)
+{
+	t_node	*current;
+	int		lowest;
+
+	current = stack->top;
+	lowest = current->value;
+	while (current != NULL)
+	{
+		if (current->value < lowest)
+			lowest = current->value;
+		current = current->next;
+	}
+	return (lowest);
 }

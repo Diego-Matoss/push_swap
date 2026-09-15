@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:32:55 by rimatos-          #+#    #+#             */
-/*   Updated: 2026/09/14 21:23:35 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:38:01 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,21 @@
 #include "../../includes/push_swap.h"
 #include "../../includes/stack.h"
 
-int	find_highest(t_stack *stack)
+static int	get_distance(t_stack *stack, int value)
 {
 	t_node	*current;
-	int		highest;
+	int		distance;
 
+	distance = 0;
 	current = stack->top;
-	highest = current->value;
 	while (current != NULL)
 	{
-		if (current->value > highest)
-			highest = current->value;
+		if (current->value == value)
+			break ;
+		distance++;
 		current = current->next;
 	}
-	return (highest);
+	return (distance);
 }
 
 void	sort_three(t_stack *a)
@@ -43,39 +44,6 @@ void	sort_three(t_stack *a)
 		rra(a, 1);
 	if (a->top->value > a->top->next->value)
 		sa(a, 1);
-}
-
-int	find_lowest(t_stack *stack)
-{
-	t_node	*current;
-	int		lowest;
-
-	current = stack->top;
-	lowest = current->value;
-	while (current != NULL)
-	{
-		if (current->value < lowest)
-			lowest = current->value;
-		current = current->next;
-	}
-	return (lowest);
-}
-
-int	get_distance(t_stack *stack, int value)
-{
-	t_node	*current;
-	int		distance;
-
-	distance = 0;
-	current = stack->top;
-	while (current != NULL)
-	{
-		if (current->value == value)
-			break ;
-		distance++;
-		current = current->next;
-	}
-	return (distance);
 }
 
 void	sort_two(t_stack *a)

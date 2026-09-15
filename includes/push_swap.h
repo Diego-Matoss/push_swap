@@ -6,7 +6,7 @@
 /*   By: dimatos- <dimatos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/15 17:09:29 by dimatos-          #+#    #+#             */
-/*   Updated: 2026/09/15 15:48:58 by dimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/15 16:38:51 by dimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,7 @@ void				sort_two(t_stack *a);
 void				sort_small(t_stack *a, t_stack *b);
 void				chunk_sort(t_stack *a, t_stack *b);
 void				radix_sort(t_stack *a, t_stack *b);
+int					find_highest(t_stack *stack);
+int					find_lowest(t_stack *stack);
 
 #endif
