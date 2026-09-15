@@ -6,7 +6,7 @@
 /*   By: rimatos- <rimatos-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/08 21:33:47 by rimatos-          #+#    #+#             */
-/*   Updated: 2026/09/08 21:33:48 by rimatos-         ###   ########.fr       */
+/*   Updated: 2026/09/09 21:17:37 by rimatos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ void	push_chunks(t_stack *a, t_stack *b)
 	int	chunk_size;
 	int	limit;
 
-	// LA MAGIA: Hacemos el tamaño dinámico para reventar los 500 números
 	if (a->size <= 100)
 		chunk_size = a->size / 5;
 	else
 		chunk_size = a->size / 11;
+	if (chunk_size == 0)
+        chunk_size = 1;
 	limit = chunk_size;
 	while (a->size > 0)
 	{
